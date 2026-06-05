@@ -619,7 +619,7 @@
 </div>
 
 <script>
-const FORMSPREE_ID = 'jabatista.garcia@gmail.com';
+const FORMSPREE_ID = 'mzdqzlyl';
 const WA_NUMBER = '5215661422790';
 const FORM_URL = window.location.href.split('?')[0];
 
@@ -999,7 +999,10 @@ function copyText(encoded, btnId, doneLabel, origLabel) {
 
 // Read ?lang= param on load
 const urlLang = new URLSearchParams(window.location.search).get('lang');
-if (urlLang && ['es','en','pt'].includes(urlLang)) setLang(urlLang);
+if (urlLang && ['es','en','pt'].includes(urlLang)) {
+  setLang(urlLang);
+  document.querySelector('.send-section').style.display = 'none';
+}
 </script>
 </body>
 </html>
