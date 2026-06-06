@@ -431,6 +431,11 @@
   </div>
 
   <div id="main-form">
+   <div class="section">
+    <div class="section-label" id="lbl-nombre">Tu nombre</div>
+    <input type="text" id="input-nombre" placeholder="Nombre y apellido" style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'">
+  </div>
+  <hr class="divider">
     <div class="progress-wrap">
       <div class="progress-label" id="prog-label">0 de 7 preguntas respondidas</div>
       <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
@@ -467,6 +472,9 @@
           <div><div class="card-ct" id="r6">Otro</div><div class="card-cs" id="r6s">Mi negocio es diferente</div></div>
         </button>
       </div>
+     <div id="otro-box" style="display:none;margin-top:-1rem;margin-bottom:1.75rem">
+       <textarea id="input-otro" rows="2" placeholder="Describe brevemente tu negocio..." style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;resize:none;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'"></textarea>
+     </div>
 
       <div class="question" id="q2">¿Para qué quieres el sitio principalmente?</div>
       <div class="cards-row" id="g-objetivo">
@@ -578,7 +586,11 @@
         </button>
       </div>
     </div>
-
+    <div class="section" style="margin-top:2rem">
+     <div class="section-label" id="lbl-comments">Comentarios adicionales</div>
+     <div class="question" id="q-comments">¿Algo más que quieras contarme?</div>
+     <textarea id="input-comments" rows="3" placeholder="Detalles adicionales, preguntas, ideas..." style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;resize:none;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'"></textarea>
+   </div>
     <!-- Submit button -->
     <button id="submit-btn" onclick="submitForm()" style="width:100%;padding:15px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;transition:opacity .15s;margin-top:1rem">
       <span id="submit-label">Enviar respuestas</span>
@@ -864,6 +876,9 @@ function pick(btn, group) {
   document.querySelectorAll('[data-g="'+group+'"]').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   state[group] = btn.dataset.v;
+  if (group === 'rubro') {
+    document.getElementById('otro-box').style.display = btn.dataset.v === 'otro' ? 'block' : 'none';
+  }
   updateProgress();
 }
 
@@ -899,6 +914,18 @@ async function submitForm() {
   const lm = t.labelMap;
   const formData = new FormData();
   formData.append('_subject', 'Nuevo brief de sitio web');
+  const nombre = document.getElementById('input-nombre').value.trim();
+  const otroRubro = document.getElementById('input-otro').value.trim();
+  const comments = document.getElementById('input-comments').value.trim();
+  
+  if (!nombre) { 
+    alert(lang === 'es' ? 'Por favor ingresa tu nombre.' : lang === 'en' ? 'Please enter your name.' : 'Por favor insira seu nome.');
+    btn.style.opacity = '1'; btn.disabled = false; lbl.textContent = t.submitBtn;
+    return;
+  }
+  formData.append('Nombre', nombre);
+  if (otroRubro) formData.append('Rubro (detalle)', otroRubro);
+  if (comments) formData.append('Comentarios', comments);
   formData.append('_language', lang);
   if (state.rubro) formData.append(lm.rubro, getLabel(state.rubro, lang));
   if (state.objetivo) formData.append(lm.objetivo, getLabel(state.objetivo, lang));
