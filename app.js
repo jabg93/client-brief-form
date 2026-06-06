@@ -84,6 +84,13 @@ const T = {
     alertNombre: 'Por favor ingresa tu nombre.',
     alertNegocio: 'Por favor ingresa el nombre de tu negocio.',
     alertDescripcion: 'Por favor cuéntanos qué imaginas para tu sitio.',
+    alertRubro: 'Por favor selecciona el rubro de tu negocio.',
+    alertObjetivo: 'Por favor selecciona al menos un objetivo para tu sitio.',
+    alertEstilo: 'Por favor selecciona el estilo visual que prefieres.',
+    alertMaterial: 'Por favor indica con qué materiales cuentas.',
+    alertFunciones: 'Por favor selecciona al menos una función para tu sitio.',
+    alertPresupuesto: 'Por favor selecciona un rango de presupuesto.',
+    alertUrgencia: 'Por favor indica para cuándo necesitas el sitio.',
     labelMap: { rubro: 'Rubro', objetivo: 'Objetivo', estilo: 'Estilo', colores: 'Colores', material: 'Material', funciones: 'Funciones', presupuesto: 'Presupuesto', urgencia: 'Tiempo', descripcion: 'Descripción', referencia: 'Referencia', negocio: 'Negocio', otroRubro: 'Rubro (detalle)' }
   },
   en: {
@@ -93,17 +100,17 @@ const T = {
     s1: 'Your information', s2: 'Your business', s3: 'Website goal',
     s4: 'Visual style', s5: 'Available materials', s6: 'Features',
     s7: 'Budget & timeline', s8: 'Almost done',
-    q0: 'What is your name?', q0b: 'What is the name of your business?',
-    q2: 'What does your business do?',
-    q3: 'What do you want the site for? (pick several)',
+    q0: 'What is your name? ', q0b: 'What is the name of your business?',
+    q2: 'What does your business do? ',
+    q3: 'What do you want the site for? (pick several) ',
     q4: 'Is there a website you like or find inspiring?',
-    q5: 'How do you want your site to look?',
+    q5: 'How do you want your site to look? ',
     q6: 'Do you have favorite colors for your site? (pick up to 2)',
-    q7: 'What materials do you already have?',
-    q8: 'What do you need your site to do?',
-    q9: 'How much are you thinking of investing?',
-    q10: 'When do you need the site?',
-    q11: 'In your own words, what do you imagine for your site?',
+    q7: 'What materials do you already have? ',
+    q8: 'What do you need your site to do? ',
+    q9: 'How much are you thinking of investing? ',
+    q10: 'When do you need the site? ',
+    q11: 'In your own words, what do you imagine for your site? ',
     nombrePlaceholder: 'First and last name',
     negocioPlaceholder: 'Business name',
     referenciasPlaceholder: 'https://... (optional)',
@@ -148,6 +155,13 @@ const T = {
     alertNombre: 'Please enter your name.',
     alertNegocio: 'Please enter your business name.',
     alertDescripcion: 'Please tell us what you imagine for your site.',
+    alertRubro: 'Please select your business industry.',
+    alertObjetivo: 'Please select at least one goal for your site.',
+    alertEstilo: 'Please select a visual style.',
+    alertMaterial: 'Please indicate what materials you have.',
+    alertFunciones: 'Please select at least one feature for your site.',
+    alertPresupuesto: 'Please select a budget range.',
+    alertUrgencia: 'Please indicate when you need the site.',
     labelMap: { rubro: 'Industry', objetivo: 'Goal', estilo: 'Style', colores: 'Colors', material: 'Materials', funciones: 'Features', presupuesto: 'Budget', urgencia: 'Timeline', descripcion: 'Description', referencia: 'Reference', negocio: 'Business', otroRubro: 'Industry (detail)' }
   },
   pt: {
@@ -157,17 +171,17 @@ const T = {
     s1: 'Suas informações', s2: 'Seu negócio', s3: 'Objetivo do site',
     s4: 'Estilo visual', s5: 'Materiais disponíveis', s6: 'Funcionalidades',
     s7: 'Orçamento e prazo', s8: 'Quase lá',
-    q0: 'Qual é o seu nome?', q0b: 'Qual é o nome do seu negócio?',
-    q2: 'O que o seu negócio faz?',
-    q3: 'Para que você quer o site? (pode escolher vários)',
+    q0: 'Qual é o seu nome? ', q0b: 'Qual é o nome do seu negócio?',
+    q2: 'O que o seu negócio faz? ',
+    q3: 'Para que você quer o site? (pode escolher vários) ',
     q4: 'Tem algum site que você gosta ou que te inspira?',
-    q5: 'Como você quer que seu site pareça?',
+    q5: 'Como você quer que seu site pareça ?',
     q6: 'Tem cores favoritas para o seu site? (escolha até 2)',
-    q7: 'Que materiais você já tem?',
-    q8: 'O que você precisa que o site faça?',
-    q9: 'Quanto você pensa em investir?',
-    q10: 'Quando você precisa do site?',
-    q11: 'Com suas próprias palavras, o que você imagina para o seu site?',
+    q7: 'Que materiais você já tem? ',
+    q8: 'O que você precisa que o site faça ?',
+    q9: 'Quanto você pensa em investir? ',
+    q10: 'Quando você precisa do site? ',
+    q11: 'Com suas próprias palavras, o que você imagina para o seu site? ',
     nombrePlaceholder: 'Nome e sobrenome',
     negocioPlaceholder: 'Nome do negócio',
     referenciasPlaceholder: 'https://... (opcional)',
@@ -202,7 +216,7 @@ const T = {
     submitBtn: 'Enviar respostas', submitSending: 'Enviando...',
     tyTitle: 'Pronto, obrigado!',
     tySub: 'Recebi suas respostas e entrarei em contato em breve com uma proposta.',
-    sendTitle: 'Compartilhar com seu cliente',
+    sendTitle: 'Compartilhar com cliente',
     sendSub: 'Escolha o idioma e o canal para enviar o link',
     waMsg: 'Oi 👋 Estou te mandando este formulário para você me contar o que está procurando no seu site. Leva só 3 minutos e me ajuda muito a preparar uma proposta pra você 😊\n\n',
     emailSubj: 'Me conta sobre o seu site',
@@ -212,9 +226,17 @@ const T = {
     alertNombre: 'Por favor insira seu nome.',
     alertNegocio: 'Por favor insira o nome do seu negócio.',
     alertDescripcion: 'Por favor nos conte o que você imagina para o seu site.',
+    alertRubro: 'Por favor selecione o setor do seu negócio.',
+    alertObjetivo: 'Por favor selecione pelo menos um objetivo para o seu site.',
+    alertEstilo: 'Por favor selecione um estilo visual.',
+    alertMaterial: 'Por favor indique quais materiais você tem.',
+    alertFunciones: 'Por favor selecione pelo menos uma funcionalidade para o seu site.',
+    alertPresupuesto: 'Por favor selecione uma faixa de orçamento.',
+    alertUrgencia: 'Por favor indique quando você precisa do site.',
     labelMap: { rubro: 'Setor', objetivo: 'Objetivo', estilo: 'Estilo', colores: 'Cores', material: 'Materiais', funciones: 'Funcionalidades', presupuesto: 'Orçamento', urgencia: 'Prazo', descripcion: 'Descrição', referencia: 'Referência', negocio: 'Negócio', otroRubro: 'Setor (detalhe)' }
   }
 };
+const REQUIRED_QUESTIONS = ['q0', 'q0b', 'q2', 'q3', 'q5', 'q7', 'q8','q9', 'q10', 'q11'];
 
 /* ── Value labels (for Formspree submission) ── */
 const valueLabels = {
@@ -309,7 +331,12 @@ function setLang(l) {
 
   Object.entries(domMap).forEach(([id, key]) => {
     const el = document.getElementById(id);
-    if (el && t[key] !== undefined) el.textContent = t[key];
+    if (el && t[key] !== undefined) {
+      const star = REQUIRED_QUESTIONS.includes(id)
+        ? ' <span class="required-star">*</span>'
+        : '';
+      el.innerHTML = t[key] + star;
+    }
   });
 
   updateProgress();
@@ -384,6 +411,13 @@ async function submitForm() {
 
   if (!nombre) { alert(t.alertNombre); return; }
   if (!negocio) { alert(t.alertNegocio); return; }
+  if (!state.rubro) { alert(t.alertRubro); return; }
+  if (!state.objetivo.length) { alert(t.alertObjetivo); return; }
+  if (!state.estilo) { alert(t.alertEstilo); return; }
+  if (!state.material.length) { alert(t.alertMaterial); return; }
+  if (!state.funciones.length) { alert(t.alertFunciones); return; }
+  if (!state.presupuesto) { alert(t.alertPresupuesto); return; }
+  if (!state.urgencia) { alert(t.alertUrgencia); return; }
   if (!descripcion) { alert(t.alertDescripcion); return; }
 
   lbl.textContent = t.submitSending;
