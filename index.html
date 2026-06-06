@@ -686,6 +686,9 @@ const T = {
     copied:'Copiado ✓',
     openWa:'Abrir WhatsApp',
     openEmail:'Abrir correo',
+    commentsLabel: 'Comentarios adicionales',
+    commentsQuestion: '¿Algo más que quieras contarme?',
+    commentsPlaceholder: 'Detalles adicionales, preguntas, ideas...',
     labelMap:{rubro:'Rubro',objetivo:'Objetivo',funciones:'Funciones',estilo:'Estilo',material:'Material',urgencia:'Urgencia',presupuesto:'Presupuesto'}
   },
   en:{
@@ -738,6 +741,9 @@ const T = {
     copied:'Copied ✓',
     openWa:'Open WhatsApp',
     openEmail:'Open email',
+    commentsLabel: 'Additional comments',
+    commentsQuestion: 'Anything else you\'d like to share?',
+    commentsPlaceholder: 'Additional details, questions, ideas...',
     labelMap:{rubro:'Industry',objetivo:'Goal',funciones:'Features',estilo:'Style',material:'Materials',urgencia:'Timeline',presupuesto:'Budget'}
   },
   pt:{
@@ -790,6 +796,9 @@ const T = {
     copied:'Copiado ✓',
     openWa:'Abrir WhatsApp',
     openEmail:'Abrir e-mail',
+    commentsLabel: 'Comentários adicionais',
+    commentsQuestion: 'Tem mais alguma coisa que queira me contar?',
+    commentsPlaceholder: 'Detalhes adicionais, perguntas, ideias...',
     labelMap:{rubro:'Setor',objetivo:'Objetivo',funciones:'Funcionalidades',estilo:'Estilo',material:'Materiais',urgencia:'Prazo',presupuesto:'Orçamento'}
   }
 };
@@ -854,6 +863,9 @@ function setLang(l) {
   document.getElementById('header-title').textContent = t.headerTitle;
   document.getElementById('lbl-nombre').textContent = t.nombreLabel;
   document.getElementById('input-nombre').placeholder = t.nombrePlaceholder;
+  document.getElementById('lbl-comments').textContent = t.commentsLabel;
+  document.getElementById('q-comments').textContent = t.commentsQuestion;
+  document.getElementById('input-comments').placeholder = t.commentsPlaceholder;
   document.getElementById('header-sub').textContent = t.headerSub;
   document.getElementById('submit-label').textContent = t.submitBtn;
   document.getElementById('ty-title').textContent = t.tyTitle;
