@@ -9,364 +9,69 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --bg: #F7F5F0;
-    --surface: #FFFFFF;
-    --border: #E2DDD6;
-    --border-strong: #C8C0B4;
-    --text: #1A1714;
-    --text-muted: #7A7268;
-    --text-hint: #ADA59B;
-    --accent: #2D5BE3;
-    --accent-bg: #EEF2FD;
-    --accent-border: #BDCCF7;
-    --success: #1A7A4A;
-    --success-bg: #EAF7F0;
-    --success-border: #A8DBBF;
-    --radius: 10px;
-    --radius-lg: 14px;
+    --bg: #F7F5F0; --surface: #FFFFFF; --border: #E2DDD6; --border-strong: #C8C0B4;
+    --text: #1A1714; --text-muted: #7A7268; --text-hint: #ADA59B;
+    --accent: #2D5BE3; --accent-bg: #EEF2FD; --accent-border: #BDCCF7;
+    --success: #1A7A4A; --success-bg: #EAF7F0; --success-border: #A8DBBF;
+    --radius: 10px; --radius-lg: 14px;
     --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 2rem 1rem 4rem;
-  }
-
-  .container {
-    max-width: 680px;
-    margin: 0 auto;
-  }
-
-  header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  header h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.8rem, 5vw, 2.6rem);
-    font-weight: 400;
-    line-height: 1.2;
-    margin-bottom: 0.5rem;
-    color: var(--text);
-  }
-
-  header p {
-    font-size: 15px;
-    color: var(--text-muted);
-    font-weight: 300;
-  }
-
-  .lang-bar {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .lang-btn {
-    padding: 8px 20px;
-    border: 1px solid var(--border-strong);
-    border-radius: 100px;
-    background: transparent;
-    color: var(--text-muted);
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    transition: all .15s;
-  }
-
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 2rem 1rem 4rem; }
+  .container { max-width: 680px; margin: 0 auto; }
+  header { text-align: center; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+  header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 400; line-height: 1.2; margin-bottom: 0.5rem; }
+  header p { font-size: 15px; color: var(--text-muted); font-weight: 300; }
+  .lang-bar { display: flex; gap: 8px; justify-content: center; margin-bottom: 2.5rem; }
+  .lang-btn { padding: 8px 20px; border: 1px solid var(--border-strong); border-radius: 100px; background: transparent; color: var(--text-muted); cursor: pointer; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 400; transition: all .15s; }
   .lang-btn:hover { background: var(--surface); color: var(--text); }
-  .lang-btn.active {
-    background: var(--text);
-    color: var(--bg);
-    border-color: var(--text);
-  }
-
-  .progress-wrap {
-    margin-bottom: 2.5rem;
-  }
-
-  .progress-label {
-    font-size: 12px;
-    color: var(--text-hint);
-    margin-bottom: 8px;
-    letter-spacing: .04em;
-    text-transform: uppercase;
-  }
-
-  .progress-track {
-    height: 2px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .progress-fill {
-    height: 100%;
-    background: var(--accent);
-    border-radius: 2px;
-    transition: width .4s ease;
-    width: 0%;
-  }
-
-  .section {
-    margin-bottom: 2.5rem;
-  }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 500;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--text-hint);
-    margin-bottom: 1.25rem;
-  }
-
-  .question {
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--text);
-    margin-bottom: 1rem;
-    line-height: 1.5;
-  }
-
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 2.5rem 0;
-  }
-
-  /* Pills */
-  .pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 1.75rem;
-  }
-
-  .pill {
-    padding: 9px 18px;
-    border: 1px solid var(--border-strong);
-    border-radius: 100px;
-    background: var(--surface);
-    color: var(--text);
-    cursor: pointer;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 400;
-    transition: all .15s;
-    box-shadow: var(--shadow);
-  }
-
+  .lang-btn.active { background: var(--text); color: var(--bg); border-color: var(--text); }
+  .progress-wrap { margin-bottom: 2.5rem; }
+  .progress-label { font-size: 12px; color: var(--text-hint); margin-bottom: 8px; letter-spacing: .04em; text-transform: uppercase; }
+  .progress-track { height: 2px; background: var(--border); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width .4s ease; width: 0%; }
+  .section { margin-bottom: 2.5rem; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--text-hint); margin-bottom: 1.25rem; }
+  .question { font-size: 17px; font-weight: 400; color: var(--text); margin-bottom: 1rem; line-height: 1.5; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 2.5rem 0; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.75rem; }
+  .pill { padding: 9px 18px; border: 1px solid var(--border-strong); border-radius: 100px; background: var(--surface); color: var(--text); cursor: pointer; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 400; transition: all .15s; box-shadow: var(--shadow); }
   .pill:hover { border-color: var(--accent); color: var(--accent); }
-
-  .pill.selected {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-    color: var(--accent);
-    font-weight: 500;
-  }
-
-  /* Cards */
-  .cards-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 1.75rem;
-  }
-
-  .card-pill {
-    flex: 1;
-    min-width: 140px;
-    padding: 14px 16px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--surface);
-    color: var(--text);
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    text-align: left;
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-    transition: all .15s;
-    box-shadow: var(--shadow);
-  }
-
+  .pill.selected { background: var(--accent-bg); border-color: var(--accent-border); color: var(--accent); font-weight: 500; }
+  .cards-row { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.75rem; }
+  .card-pill { flex: 1; min-width: 140px; padding: 14px 16px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--surface); color: var(--text); cursor: pointer; font-family: 'DM Sans', sans-serif; text-align: left; display: flex; gap: 12px; align-items: flex-start; transition: all .15s; box-shadow: var(--shadow); }
   .card-pill:hover { border-color: var(--border-strong); }
-
-  .card-pill.selected {
-    background: var(--accent-bg);
-    border-color: var(--accent-border);
-  }
-
-  .card-pill svg {
-    width: 20px;
-    height: 20px;
-    flex-shrink: 0;
-    margin-top: 1px;
-    color: var(--text-muted);
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
+  .card-pill.selected { background: var(--accent-bg); border-color: var(--accent-border); }
+  .card-pill svg { width: 20px; height: 20px; flex-shrink: 0; margin-top: 1px; color: var(--text-muted); stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
   .card-pill.selected svg { color: var(--accent); }
-
-  .card-ct {
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text);
-    line-height: 1.3;
-  }
-
-  .card-cs {
-    font-size: 11px;
-    color: var(--text-hint);
-    margin-top: 3px;
-    line-height: 1.4;
-  }
-
+  .card-ct { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3; }
+  .card-cs { font-size: 11px; color: var(--text-hint); margin-top: 3px; line-height: 1.4; }
   .card-pill.selected .card-ct { color: var(--accent); }
   .card-pill.selected .card-cs { color: #7A96E8; }
-
-  /* Send section */
-  .send-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 1.5rem;
-    margin-top: 2.5rem;
-    box-shadow: var(--shadow);
-  }
-
-  .send-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.15rem;
-    font-weight: 400;
-    margin-bottom: 0.35rem;
-  }
-
-  .send-sub {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 1.25rem;
-  }
-
-  .send-langs {
-    display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
-    margin-bottom: 1.25rem;
-  }
-
-  .channel-row {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 1.25rem;
-  }
-
-  .channel-btn {
-    flex: 1;
-    padding: 12px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    background: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    font-size: 14px;
-    font-family: 'DM Sans', sans-serif;
-    color: var(--text);
-    transition: all .15s;
-  }
-
+  .color-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 1.75rem; }
+  .color-swatch { width: 52px; height: 52px; border-radius: 50%; cursor: pointer; border: 3px solid transparent; transition: all .15s; position: relative; box-shadow: var(--shadow); }
+  .color-swatch.selected { border-color: var(--accent); transform: scale(1.1); }
+  .color-swatch.selected::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; text-shadow: 0 1px 2px rgba(0,0,0,0.5); }
+  .text-input { width: 100%; padding: 12px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 15px; outline: none; transition: border .15s; }
+  .text-input:focus { border-color: var(--accent); }
+  .text-area { width: 100%; padding: 12px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px; resize: none; outline: none; transition: border .15s; }
+  .text-area:focus { border-color: var(--accent); }
+  .char-count { font-size: 12px; color: var(--text-hint); text-align: right; margin-top: 4px; }
+  .send-section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 1.5rem; margin-top: 2.5rem; box-shadow: var(--shadow); }
+  .send-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; font-weight: 400; margin-bottom: 0.35rem; }
+  .send-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 1.25rem; }
+  .send-langs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.25rem; }
+  .channel-row { display: flex; gap: 10px; margin-bottom: 1.25rem; }
+  .channel-btn { flex: 1; padding: 12px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); transition: all .15s; }
   .channel-btn:hover { background: var(--bg); }
-
-  .channel-btn.selected {
-    background: var(--success-bg);
-    color: var(--success);
-    border-color: var(--success-border);
-    font-weight: 500;
-  }
-
-  .channel-btn svg {
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .share-box {
-    display: none;
-    background: var(--bg);
-    border-radius: var(--radius);
-    padding: 1rem;
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.7;
-    border: 1px solid var(--border);
-  }
-
+  .channel-btn.selected { background: var(--success-bg); color: var(--success); border-color: var(--success-border); font-weight: 500; }
+  .channel-btn svg { width: 18px; height: 18px; flex-shrink: 0; stroke: currentColor; fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+  .share-box { display: none; background: var(--bg); border-radius: var(--radius); padding: 1rem; font-size: 13px; color: var(--text-muted); line-height: 1.7; border: 1px solid var(--border); }
   .share-box.show { display: block; }
-
-  .share-box strong {
-    color: var(--text);
-    font-weight: 500;
-    display: block;
-    margin-bottom: 6px;
-  }
-
-  .share-box .link-text {
-    color: var(--accent);
-    word-break: break-all;
-    font-size: 12px;
-  }
-
-  .action-row {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-    flex-wrap: wrap;
-  }
-
-  .action-btn {
-    flex: 1;
-    min-width: 120px;
-    padding: 10px 16px;
-    border: 1px solid var(--border-strong);
-    border-radius: var(--radius);
-    background: var(--surface);
-    cursor: pointer;
-    font-size: 13px;
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 500;
-    color: var(--text);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    transition: all .15s;
-    text-decoration: none;
-  }
-
+  .share-box strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 6px; }
+  .share-box .link-text { color: var(--accent); word-break: break-all; font-size: 12px; }
+  .action-row { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .action-btn { flex: 1; min-width: 120px; padding: 10px 16px; border: 1px solid var(--border-strong); border-radius: var(--radius); background: var(--surface); cursor: pointer; font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--text); display: flex; align-items: center; justify-content: center; gap: 6px; transition: all .15s; text-decoration: none; }
   .action-btn:hover { background: var(--bg); }
   .action-btn svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; flex-shrink:0; }
   .action-btn.primary { background: var(--accent); color: white; border-color: var(--accent); }
@@ -374,41 +79,13 @@
   .action-btn.wa { background: #25D366; color: white; border-color: #25D366; }
   .action-btn.wa:hover { opacity: .9; }
   .action-btn.done { color: var(--success); border-color: var(--success-border); background: var(--success-bg); }
-
-  /* Thank you screen */
-  .thankyou {
-    display: none;
-    text-align: center;
-    padding: 3rem 1rem;
-  }
-
+  .thankyou { display: none; text-align: center; padding: 3rem 1rem; }
   .thankyou.show { display: block; }
-
-  .thankyou-icon {
-    width: 56px;
-    height: 56px;
-    background: var(--success-bg);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 1.25rem;
-  }
-
+  .thankyou-icon { width: 56px; height: 56px; background: var(--success-bg); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem; }
   .thankyou-icon svg { width:24px; height:24px; stroke: var(--success); fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; }
-
-  .thankyou h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 1.6rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
-
-  .thankyou p {
-    color: var(--text-muted);
-    font-size: 15px;
-  }
-
+  .thankyou h2 { font-family: 'DM Serif Display', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; }
+  .thankyou p { color: var(--text-muted); font-size: 15px; }
+  .required-star { color: var(--accent); margin-left: 2px; }
   @media (max-width: 480px) {
     .cards-row { flex-direction: column; }
     .card-pill { min-width: unset; }
@@ -421,7 +98,7 @@
 
   <header>
     <h1 id="header-title">Cuéntame sobre tu sitio web</h1>
-    <p id="header-sub">Toma 3 minutos · Sin texto libre · Solo clics</p>
+    <p id="header-sub">Toma 3 minutos · Fácil y rápido</p>
   </header>
 
   <div class="lang-bar">
@@ -431,168 +108,212 @@
   </div>
 
   <div id="main-form">
-   <div class="section">
-    <div class="section-label" id="lbl-nombre">Tu nombre</div>
-    <input type="text" id="input-nombre" placeholder="Nombre y apellido" style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:15px;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'">
-  </div>
-  <hr class="divider">
+
     <div class="progress-wrap">
-      <div class="progress-label" id="prog-label">0 de 7 preguntas respondidas</div>
+      <div class="progress-label" id="prog-label">0 de 6 preguntas respondidas</div>
       <div class="progress-track"><div class="progress-fill" id="progress"></div></div>
     </div>
 
-    <!-- S1 -->
+    <!-- S1: Identificación -->
     <div class="section">
-      <div class="section-label" id="lbl-s1">Tu negocio</div>
+      <div class="section-label" id="lbl-s1">Tu información</div>
 
-      <div class="question" id="q1">¿Cuál es el rubro de tu negocio?</div>
+      <div class="question" id="q0">¿Cuál es tu nombre? <span class="required-star">*</span></div>
+      <input type="text" id="input-nombre" class="text-input" placeholder="Nombre y apellido" style="margin-bottom:1.5rem">
+
+      <div class="question" id="q0b">¿Cuál es el nombre de tu negocio? <span class="required-star">*</span></div>
+      <input type="text" id="input-negocio" class="text-input" placeholder="Nombre del negocio">
+    </div>
+
+    <hr class="divider">
+
+    <!-- S2: Rubro -->
+    <div class="section">
+      <div class="section-label" id="lbl-s2">Tu negocio</div>
+
+      <div class="question" id="q2">¿A qué se dedica tu negocio? <span class="required-star">*</span></div>
       <div class="cards-row" id="g-rubro">
+        <button class="card-pill" data-g="rubro" data-v="restaurante" onclick="pick(this,'rubro')">
+          <svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+          <div><div class="card-ct" id="r1">Restaurante / Café</div><div class="card-cs" id="r1s">Comida, bebidas, catering</div></div>
+        </button>
         <button class="card-pill" data-g="rubro" data-v="belleza" onclick="pick(this,'rubro')">
           <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
-          <div><div class="card-ct" id="r1">Belleza y bienestar</div><div class="card-cs" id="r1s">Salón, spa, estética</div></div>
-        </button>
-        <button class="card-pill" data-g="rubro" data-v="alimentos" onclick="pick(this,'rubro')">
-          <svg viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
-          <div><div class="card-ct" id="r2">Alimentos</div><div class="card-cs" id="r2s">Restaurante, catering, pastelería</div></div>
+          <div><div class="card-ct" id="r2">Salud & Belleza</div><div class="card-cs" id="r2s">Salón, spa, clínica, terapia</div></div>
         </button>
         <button class="card-pill" data-g="rubro" data-v="moda" onclick="pick(this,'rubro')">
           <svg viewBox="0 0 24 24"><path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/></svg>
-          <div><div class="card-ct" id="r3">Moda y retail</div><div class="card-cs" id="r3s">Ropa, accesorios, tienda</div></div>
+          <div><div class="card-ct" id="r3">Moda / Ropa</div><div class="card-cs" id="r3s">Ropa, accesorios, tienda</div></div>
         </button>
         <button class="card-pill" data-g="rubro" data-v="servicios" onclick="pick(this,'rubro')">
           <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
           <div><div class="card-ct" id="r4">Servicios profesionales</div><div class="card-cs" id="r4s">Consultoría, legal, contable</div></div>
         </button>
-        <button class="card-pill" data-g="rubro" data-v="salud" onclick="pick(this,'rubro')">
-          <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-          <div><div class="card-ct" id="r5">Salud</div><div class="card-cs" id="r5s">Clínica, consultorio, terapia</div></div>
+        <button class="card-pill" data-g="rubro" data-v="educacion" onclick="pick(this,'rubro')">
+          <svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <div><div class="card-ct" id="r5">Educación</div><div class="card-cs" id="r5s">Academia, cursos, coaching</div></div>
+        </button>
+        <button class="card-pill" data-g="rubro" data-v="inmobiliaria" onclick="pick(this,'rubro')">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div><div class="card-ct" id="r6">Inmobiliaria</div><div class="card-cs" id="r6s">Renta, venta, propiedades</div></div>
         </button>
         <button class="card-pill" data-g="rubro" data-v="otro" onclick="pick(this,'rubro')">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-          <div><div class="card-ct" id="r6">Otro</div><div class="card-cs" id="r6s">Mi negocio es diferente</div></div>
+          <div><div class="card-ct" id="r7">Otro</div><div class="card-cs" id="r7s">Mi negocio es diferente</div></div>
         </button>
       </div>
-     <div id="otro-box" style="display:none;margin-top:-1rem;margin-bottom:1.75rem">
-       <textarea id="input-otro" rows="2" placeholder="Describe brevemente tu negocio..." style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;resize:none;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'"></textarea>
-     </div>
-
-      <div class="question" id="q2">¿Para qué quieres el sitio principalmente?</div>
-      <div class="cards-row" id="g-objetivo">
-        <button class="card-pill" data-g="objetivo" data-v="presencia" onclick="pick(this,'objetivo')">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-          <div><div class="card-ct" id="o1">Presencia online</div><div class="card-cs" id="o1s">Que me encuentren en Google</div></div>
-        </button>
-        <button class="card-pill" data-g="objetivo" data-v="clientes" onclick="pick(this,'objetivo')">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-          <div><div class="card-ct" id="o2">Conseguir clientes</div><div class="card-cs" id="o2s">Generar contactos y ventas</div></div>
-        </button>
-        <button class="card-pill" data-g="objetivo" data-v="vender" onclick="pick(this,'objetivo')">
-          <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-          <div><div class="card-ct" id="o3">Vender productos</div><div class="card-cs" id="o3s">Tienda en línea</div></div>
-        </button>
-        <button class="card-pill" data-g="objetivo" data-v="citas" onclick="pick(this,'objetivo')">
-          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-          <div><div class="card-ct" id="o4">Reservar citas</div><div class="card-cs" id="o4s">Agenda online para clientes</div></div>
-        </button>
+      <div id="otro-box" style="display:none;margin-top:-1rem;margin-bottom:1.75rem">
+        <textarea id="input-otro" class="text-area" rows="2" id="input-otro-desc" placeholder="Describe brevemente tu negocio..."></textarea>
       </div>
     </div>
 
     <hr class="divider">
 
-    <!-- S2 -->
+    <!-- S3: Objetivo (multi) -->
     <div class="section">
-      <div class="section-label" id="lbl-s2">Funciones</div>
-      <div class="question" id="q3">¿Qué funciones necesitas? (puedes elegir varias)</div>
-      <div class="pills" id="g-funciones">
-        <button class="pill" data-g="funciones" data-v="contacto" onclick="pickMulti(this,'funciones')" id="f1">Formulario de contacto</button>
-        <button class="pill" data-g="funciones" data-v="citas" onclick="pickMulti(this,'funciones')" id="f2">Reservar citas</button>
-        <button class="pill" data-g="funciones" data-v="catalogo" onclick="pickMulti(this,'funciones')" id="f3">Catálogo de servicios</button>
-        <button class="pill" data-g="funciones" data-v="pagos" onclick="pickMulti(this,'funciones')" id="f4">Pagos en línea</button>
-        <button class="pill" data-g="funciones" data-v="galeria" onclick="pickMulti(this,'funciones')" id="f5">Galería de fotos</button>
-        <button class="pill" data-g="funciones" data-v="whatsapp" onclick="pickMulti(this,'funciones')" id="f6">Botón de WhatsApp</button>
-        <button class="pill" data-g="funciones" data-v="redes" onclick="pickMulti(this,'funciones')" id="f7">Redes sociales</button>
-        <button class="pill" data-g="funciones" data-v="mapa" onclick="pickMulti(this,'funciones')" id="f8">Mapa / ubicación</button>
-        <button class="pill" data-g="funciones" data-v="blog" onclick="pickMulti(this,'funciones')" id="f9">Blog o noticias</button>
-        <button class="pill" data-g="funciones" data-v="testimonios" onclick="pickMulti(this,'funciones')" id="f10">Reseñas / testimonios</button>
+      <div class="section-label" id="lbl-s3">Objetivo del sitio</div>
+
+      <div class="question" id="q3">¿Para qué quieres el sitio? (puedes elegir varios) <span class="required-star">*</span></div>
+      <div class="pills" id="g-objetivo">
+        <button class="pill" data-g="objetivo" data-v="presencia" onclick="pickMulti(this,'objetivo')" id="o1">Tener presencia en internet</button>
+        <button class="pill" data-g="objetivo" data-v="vender" onclick="pickMulti(this,'objetivo')" id="o2">Vender productos</button>
+        <button class="pill" data-g="objetivo" data-v="contacto" onclick="pickMulti(this,'objetivo')" id="o3">Que los clientes me contacten</button>
+        <button class="pill" data-g="objetivo" data-v="citas" onclick="pickMulti(this,'objetivo')" id="o4">Recibir citas / reservaciones</button>
+        <button class="pill" data-g="objetivo" data-v="portfolio" onclick="pickMulti(this,'objetivo')" id="o5">Mostrar mi trabajo</button>
+        <button class="pill" data-g="objetivo" data-v="informar" onclick="pickMulti(this,'objetivo')" id="o6">Informar sobre mis servicios</button>
       </div>
+
+      <div class="question" id="q4">¿Hay algún sitio web que te guste o te inspire?</div>
+      <input type="text" id="input-referencia" class="text-input" placeholder="https://... (opcional)">
     </div>
 
     <hr class="divider">
 
-    <!-- S3 -->
+    <!-- S4: Estilo visual -->
     <div class="section">
-      <div class="section-label" id="lbl-s3">Estilo visual</div>
+      <div class="section-label" id="lbl-s4">Estilo visual</div>
 
-      <div class="question" id="q4">¿Cómo te imaginas que se vea tu sitio?</div>
+      <div class="question" id="q5">¿Cómo quieres que se vea tu sitio? <span class="required-star">*</span></div>
       <div class="cards-row" id="g-estilo">
         <button class="card-pill" data-g="estilo" data-v="moderno" onclick="pick(this,'estilo')">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <div><div class="card-ct" id="e1">Moderno y limpio</div><div class="card-cs" id="e1s">Minimalista, elegante</div></div>
         </button>
+        <button class="card-pill" data-g="estilo" data-v="lujoso" onclick="pick(this,'estilo')">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <div><div class="card-ct" id="e2">Elegante / Lujoso</div><div class="card-cs" id="e2s">Sofisticado, premium</div></div>
+        </button>
         <button class="card-pill" data-g="estilo" data-v="colorido" onclick="pick(this,'estilo')">
           <svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.47-1.125-.29-.29-.47-.688-.47-1.125a1.648 1.648 0 0 1 1.648-1.648h1.93c3.073 0 5.214-2.219 5.214-5.205C21.5 6.215 17.208 2 12 2z"/></svg>
-          <div><div class="card-ct" id="e2">Colorido y alegre</div><div class="card-cs" id="e2s">Vibrante, llamativo</div></div>
+          <div><div class="card-ct" id="e3">Colorido y divertido</div><div class="card-cs" id="e3s">Alegre, vibrante</div></div>
         </button>
-        <button class="card-pill" data-g="estilo" data-v="clasico" onclick="pick(this,'estilo')">
+        <button class="card-pill" data-g="estilo" data-v="natural" onclick="pick(this,'estilo')">
+          <svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.9c-.19.35.13.72.5.5C7.5 18.5 12 17 17 8z"/><path d="M3 22c0-3.87 1.58-7.35 4.14-9.85"/></svg>
+          <div><div class="card-ct" id="e4">Natural / Orgánico</div><div class="card-cs" id="e4s">Fresco, natural, eco</div></div>
+        </button>
+        <button class="card-pill" data-g="estilo" data-v="formal" onclick="pick(this,'estilo')">
           <svg viewBox="0 0 24 24"><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="15" x2="21" y2="15"/><line x1="3" y1="3" x2="21" y2="3"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
-          <div><div class="card-ct" id="e3">Clásico y formal</div><div class="card-cs" id="e3s">Profesional, serio</div></div>
+          <div><div class="card-ct" id="e5">Formal / Profesional</div><div class="card-cs" id="e5s">Serio, corporativo</div></div>
         </button>
-        <button class="card-pill" data-g="estilo" data-v="no_se" onclick="pick(this,'estilo')">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div><div class="card-ct" id="e4">No lo sé aún</div><div class="card-cs" id="e4s">Necesito orientación</div></div>
+        <button class="card-pill" data-g="estilo" data-v="vintage" onclick="pick(this,'estilo')">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          <div><div class="card-ct" id="e6">Vintage / Retro</div><div class="card-cs" id="e6s">Clásico, nostálgico</div></div>
         </button>
       </div>
 
-      <div class="question" id="q5">¿Tienes material listo? (elige los que apliquen)</div>
-      <div class="pills" id="g-material">
-        <button class="pill" data-g="material" data-v="logo" onclick="pickMulti(this,'material')" id="m1">Tengo logo</button>
-        <button class="pill" data-g="material" data-v="fotos" onclick="pickMulti(this,'material')" id="m2">Tengo fotos</button>
-        <button class="pill" data-g="material" data-v="textos" onclick="pickMulti(this,'material')" id="m3">Tengo textos</button>
-        <button class="pill" data-g="material" data-v="nada" onclick="pickMulti(this,'material')" id="m4">No tengo nada todavía</button>
+      <div class="question" id="q6">¿Tienes colores favoritos para tu sitio? (elige máximo 2)</div>
+      <div class="color-grid" id="g-colores">
+        <div class="color-swatch" data-v="negro" style="background:#1A1714" onclick="pickColor(this)" title="Negro"></div>
+        <div class="color-swatch" data-v="blanco" style="background:#F5F0E8;border:1px solid #C8C0B4" onclick="pickColor(this)" title="Blanco / Beige"></div>
+        <div class="color-swatch" data-v="azul" style="background:#2D5BE3" onclick="pickColor(this)" title="Azul"></div>
+        <div class="color-swatch" data-v="verde" style="background:#1A7A4A" onclick="pickColor(this)" title="Verde"></div>
+        <div class="color-swatch" data-v="naranja" style="background:#E05A2B" onclick="pickColor(this)" title="Rojo / Naranja"></div>
+        <div class="color-swatch" data-v="rosa" style="background:#E8648A" onclick="pickColor(this)" title="Rosa"></div>
+        <div class="color-swatch" data-v="morado" style="background:#7B5EA7" onclick="pickColor(this)" title="Morado"></div>
+        <div class="color-swatch" data-v="dorado" style="background:#C9A84C" onclick="pickColor(this)" title="Dorado"></div>
       </div>
     </div>
 
     <hr class="divider">
 
-    <!-- S4 -->
+    <!-- S5: Materiales -->
     <div class="section">
-      <div class="section-label" id="lbl-s4">Tiempo y presupuesto</div>
-
-      <div class="question" id="q6">¿Cuánto tiempo tienes para tener listo el sitio?</div>
-      <div class="pills" id="g-urgencia">
-        <button class="pill" data-g="urgencia" data-v="urgente" onclick="pick(this,'urgencia')" id="u1">Lo antes posible</button>
-        <button class="pill" data-g="urgencia" data-v="1mes" onclick="pick(this,'urgencia')" id="u2">En un mes</button>
-        <button class="pill" data-g="urgencia" data-v="2meses" onclick="pick(this,'urgencia')" id="u3">En 2 o 3 meses</button>
-        <button class="pill" data-g="urgencia" data-v="sinprisa" onclick="pick(this,'urgencia')" id="u4">Sin prisa</button>
+      <div class="section-label" id="lbl-s5">Materiales disponibles</div>
+      <div class="question" id="q7">¿Con qué materiales ya cuentas? <span class="required-star">*</span></div>
+      <div class="pills" id="g-material">
+        <button class="pill" data-g="material" data-v="logo" onclick="pickMulti(this,'material')" id="m1">Logo</button>
+        <button class="pill" data-g="material" data-v="fotos_pro" onclick="pickMulti(this,'material')" id="m2">Fotos profesionales</button>
+        <button class="pill" data-g="material" data-v="fotos_cel" onclick="pickMulti(this,'material')" id="m3">Fotos de celular</button>
+        <button class="pill" data-g="material" data-v="videos" onclick="pickMulti(this,'material')" id="m4">Videos</button>
+        <button class="pill" data-g="material" data-v="textos" onclick="pickMulti(this,'material')" id="m5">Textos / descripciones</button>
+        <button class="pill" data-g="material" data-v="redes" onclick="pickMulti(this,'material')" id="m6">Redes sociales activas</button>
+        <button class="pill" data-g="material" data-v="nada" onclick="pickMulti(this,'material')" id="m7">No tengo nada aún</button>
       </div>
+    </div>
 
-      <div class="question" id="q7">¿Tienes un presupuesto aproximado en mente?</div>
+    <hr class="divider">
+
+    <!-- S6: Funcionalidades -->
+    <div class="section">
+      <div class="section-label" id="lbl-s6">Funcionalidades</div>
+      <div class="question" id="q8">¿Qué necesitas que haga tu sitio? <span class="required-star">*</span></div>
+      <div class="pills" id="g-funciones">
+        <button class="pill" data-g="funciones" data-v="galeria" onclick="pickMulti(this,'funciones')" id="f1">Galería de fotos</button>
+        <button class="pill" data-g="funciones" data-v="contacto" onclick="pickMulti(this,'funciones')" id="f2">Formulario de contacto</button>
+        <button class="pill" data-g="funciones" data-v="whatsapp" onclick="pickMulti(this,'funciones')" id="f3">Botón de WhatsApp</button>
+        <button class="pill" data-g="funciones" data-v="mapa" onclick="pickMulti(this,'funciones')" id="f4">Mapa y ubicación</button>
+        <button class="pill" data-g="funciones" data-v="citas" onclick="pickMulti(this,'funciones')" id="f5">Reservas / citas</button>
+        <button class="pill" data-g="funciones" data-v="tienda" onclick="pickMulti(this,'funciones')" id="f6">Tienda en línea</button>
+        <button class="pill" data-g="funciones" data-v="blog" onclick="pickMulti(this,'funciones')" id="f7">Blog / noticias</button>
+        <button class="pill" data-g="funciones" data-v="idiomas" onclick="pickMulti(this,'funciones')" id="f8">Más de un idioma</button>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <!-- S7: Presupuesto y tiempo -->
+    <div class="section">
+      <div class="section-label" id="lbl-s7">Presupuesto y tiempo</div>
+
+      <div class="question" id="q9">¿Cuánto tienes pensado invertir?</div>
       <div class="cards-row" id="g-presupuesto">
-        <button class="card-pill" data-g="presupuesto" data-v="basico" onclick="pick(this,'presupuesto')">
+        <button class="card-pill" data-g="presupuesto" data-v="menos500" onclick="pick(this,'presupuesto')">
           <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-          <div><div class="card-ct" id="p1">Básico</div><div class="card-cs" id="p1s">Simple y accesible</div></div>
+          <div><div class="card-ct" id="p1">Menos de $500 USD</div><div class="card-cs" id="p1s">Proyecto pequeño</div></div>
         </button>
-        <button class="card-pill" data-g="presupuesto" data-v="medio" onclick="pick(this,'presupuesto')">
+        <button class="card-pill" data-g="presupuesto" data-v="500_1500" onclick="pick(this,'presupuesto')">
           <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-          <div><div class="card-ct" id="p2">Intermedio</div><div class="card-cs" id="p2s">Invierto si vale la pena</div></div>
+          <div><div class="card-ct" id="p2">$500 – $1,500 USD</div><div class="card-cs" id="p2s">Proyecto estándar</div></div>
         </button>
-        <button class="card-pill" data-g="presupuesto" data-v="premium" onclick="pick(this,'presupuesto')">
+        <button class="card-pill" data-g="presupuesto" data-v="1500_3000" onclick="pick(this,'presupuesto')">
           <svg viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg>
-          <div><div class="card-ct" id="p3">Premium</div><div class="card-cs" id="p3s">Quiero algo muy completo</div></div>
+          <div><div class="card-ct" id="p3">$1,500 – $3,000 USD</div><div class="card-cs" id="p3s">Proyecto completo</div></div>
         </button>
         <button class="card-pill" data-g="presupuesto" data-v="no_se" onclick="pick(this,'presupuesto')">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          <div><div class="card-ct" id="p4">No lo sé aún</div><div class="card-cs" id="p4s">Ver opciones primero</div></div>
+          <div><div class="card-ct" id="p4">No lo tengo claro</div><div class="card-cs" id="p4s">Ver opciones primero</div></div>
         </button>
       </div>
+
+      <div class="question" id="q10">¿Para cuándo necesitas el sitio?</div>
+      <div class="pills" id="g-urgencia">
+        <button class="pill" data-g="urgencia" data-v="urgente" onclick="pick(this,'urgencia')" id="u1">Lo antes posible</button>
+        <button class="pill" data-g="urgencia" data-v="1mes" onclick="pick(this,'urgencia')" id="u2">En 1 mes</button>
+        <button class="pill" data-g="urgencia" data-v="sinprisa" onclick="pick(this,'urgencia')" id="u3">Sin prisa / flexible</button>
+      </div>
     </div>
-    <div class="section" style="margin-top:2rem">
-     <div class="section-label" id="lbl-comments">Comentarios adicionales</div>
-     <div class="question" id="q-comments">¿Algo más que quieras contarme?</div>
-     <textarea id="input-comments" rows="3" placeholder="Detalles adicionales, preguntas, ideas..." style="width:100%;padding:12px 16px;border:1px solid var(--border-strong);border-radius:var(--radius);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;font-size:14px;resize:none;outline:none;transition:border .15s" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border-strong)'"></textarea>
-   </div>
-    <!-- Submit button -->
-    <button id="submit-btn" onclick="submitForm()" style="width:100%;padding:15px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;transition:opacity .15s;margin-top:1rem">
+
+    <hr class="divider">
+
+    <!-- S8: Descripción libre -->
+    <div class="section">
+      <div class="section-label" id="lbl-s8">Para terminar</div>
+      <div class="question" id="q11">Con tus propias palabras, ¿qué imaginas para tu sitio? <span class="required-star">*</span></div>
+      <textarea id="input-descripcion" class="text-area" rows="4" maxlength="500" placeholder="Cuéntame lo que sea: ideas, inspiraciones, lo que quieres que sienta quien lo visita..." oninput="updateCharCount(this,'char-count-desc',500)"></textarea>
+      <div class="char-count"><span id="char-count-desc">0</span> / 500</div>
+    </div>
+
+    <button id="submit-btn" onclick="submitForm()" style="width:100%;padding:15px;background:var(--text);color:var(--bg);border:none;border-radius:var(--radius);font-family:'DM Sans',sans-serif;font-size:16px;font-weight:500;cursor:pointer;transition:opacity .15s;margin-top:0.5rem">
       <span id="submit-label">Enviar respuestas</span>
     </button>
   </div>
@@ -618,11 +339,11 @@
     <div class="channel-row">
       <button class="channel-btn" id="ch-wa" onclick="setChannel('whatsapp')">
         <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-        <span id="ch-wa-lbl">WhatsApp</span>
+        <span>WhatsApp</span>
       </button>
       <button class="channel-btn" id="ch-em" onclick="setChannel('email')">
         <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        <span id="ch-em-lbl">Email</span>
+        <span>Email</span>
       </button>
     </div>
     <div class="share-box" id="share-box"></div>
@@ -638,43 +359,54 @@ const FORM_URL = window.location.href.split('?')[0];
 const T = {
   es:{
     headerTitle:'Cuéntame sobre tu sitio web',
-    headerSub:'Toma 3 minutos · Sin texto libre · Solo clics',
-    progLabel:(d,t)=>`${d} de ${t} preguntas respondidas`,
-    nombreLabel: 'Tu nombre',
-    nombrePlaceholder: 'Nombre y apellido',
-    s1:'Tu negocio',s2:'Funciones',s3:'Estilo visual',s4:'Tiempo y presupuesto',
-    q1:'¿Cuál es el rubro de tu negocio?',
-    q2:'¿Para qué quieres el sitio principalmente?',
-    q3:'¿Qué funciones necesitas? (puedes elegir varias)',
-    q4:'¿Cómo te imaginas que se vea tu sitio?',
-    q5:'¿Tienes material listo? (elige los que apliquen)',
-    q6:'¿Cuánto tiempo tienes para tener listo el sitio?',
-    q7:'¿Tienes un presupuesto aproximado en mente?',
-    r1:'Belleza y bienestar',r1s:'Salón, spa, estética',
-    r2:'Alimentos',r2s:'Restaurante, catering, pastelería',
-    r3:'Moda y retail',r3s:'Ropa, accesorios, tienda',
+    headerSub:'Toma 3 minutos · Fácil y rápido',
+    progLabel:(d,t)=>`${d} de ${t} secciones completadas`,
+    s1:'Tu información', s2:'Tu negocio', s3:'Objetivo del sitio',
+    s4:'Estilo visual', s5:'Materiales disponibles', s6:'Funcionalidades',
+    s7:'Presupuesto y tiempo', s8:'Para terminar',
+    q0:'¿Cuál es tu nombre?', q0b:'¿Cuál es el nombre de tu negocio?',
+    q2:'¿A qué se dedica tu negocio?',
+    q3:'¿Para qué quieres el sitio? (puedes elegir varios)',
+    q4:'¿Hay algún sitio web que te guste o te inspire?',
+    q5:'¿Cómo quieres que se vea tu sitio?',
+    q6:'¿Tienes colores favoritos para tu sitio? (elige máximo 2)',
+    q7:'¿Con qué materiales ya cuentas?',
+    q8:'¿Qué necesitas que haga tu sitio?',
+    q9:'¿Cuánto tienes pensado invertir?',
+    q10:'¿Para cuándo necesitas el sitio?',
+    q11:'Con tus propias palabras, ¿qué imaginas para tu sitio?',
+    nombrePlaceholder:'Nombre y apellido',
+    negocioPlaceholder:'Nombre del negocio',
+    referenciasPlaceholder:'https://... (opcional)',
+    descripcionPlaceholder:'Cuéntame lo que sea: ideas, inspiraciones, lo que quieres que sienta quien lo visita...',
+    otroPH:'Describe brevemente tu negocio...',
+    r1:'Restaurante / Café',r1s:'Comida, bebidas, catering',
+    r2:'Salud & Belleza',r2s:'Salón, spa, clínica, terapia',
+    r3:'Moda / Ropa',r3s:'Ropa, accesorios, tienda',
     r4:'Servicios profesionales',r4s:'Consultoría, legal, contable',
-    r5:'Salud',r5s:'Clínica, consultorio, terapia',
-    r6:'Otro',r6s:'Mi negocio es diferente',
-    o1:'Presencia online',o1s:'Que me encuentren en Google',
-    o2:'Conseguir clientes',o2s:'Generar contactos y ventas',
-    o3:'Vender productos',o3s:'Tienda en línea',
-    o4:'Reservar citas',o4s:'Agenda online para clientes',
-    f1:'Formulario de contacto',f2:'Reservar citas',f3:'Catálogo de servicios',
-    f4:'Pagos en línea',f5:'Galería de fotos',f6:'Botón de WhatsApp',
-    f7:'Redes sociales',f8:'Mapa / ubicación',f9:'Blog o noticias',f10:'Reseñas / testimonios',
+    r5:'Educación',r5s:'Academia, cursos, coaching',
+    r6:'Inmobiliaria',r6s:'Renta, venta, propiedades',
+    r7:'Otro',r7s:'Mi negocio es diferente',
+    o1:'Tener presencia en internet',o2:'Vender productos',
+    o3:'Que los clientes me contacten',o4:'Recibir citas / reservaciones',
+    o5:'Mostrar mi trabajo',o6:'Informar sobre mis servicios',
     e1:'Moderno y limpio',e1s:'Minimalista, elegante',
-    e2:'Colorido y alegre',e2s:'Vibrante, llamativo',
-    e3:'Clásico y formal',e3s:'Profesional, serio',
-    e4:'No lo sé aún',e4s:'Necesito orientación',
-    m1:'Tengo logo',m2:'Tengo fotos',m3:'Tengo textos',m4:'No tengo nada todavía',
-    u1:'Lo antes posible',u2:'En un mes',u3:'En 2 o 3 meses',u4:'Sin prisa',
-    p1:'Básico',p1s:'Simple y accesible',
-    p2:'Intermedio',p2s:'Invierto si vale la pena',
-    p3:'Premium',p3s:'Quiero algo muy completo',
-    p4:'No lo sé aún',p4s:'Ver opciones primero',
-    submitBtn:'Enviar respuestas',
-    submitSending:'Enviando...',
+    e2:'Elegante / Lujoso',e2s:'Sofisticado, premium',
+    e3:'Colorido y divertido',e3s:'Alegre, vibrante',
+    e4:'Natural / Orgánico',e4s:'Fresco, natural, eco',
+    e5:'Formal / Profesional',e5s:'Serio, corporativo',
+    e6:'Vintage / Retro',e6s:'Clásico, nostálgico',
+    m1:'Logo',m2:'Fotos profesionales',m3:'Fotos de celular',
+    m4:'Videos',m5:'Textos / descripciones',m6:'Redes sociales activas',m7:'No tengo nada aún',
+    f1:'Galería de fotos',f2:'Formulario de contacto',f3:'Botón de WhatsApp',
+    f4:'Mapa y ubicación',f5:'Reservas / citas',f6:'Tienda en línea',
+    f7:'Blog / noticias',f8:'Más de un idioma',
+    p1:'Menos de $500 USD',p1s:'Proyecto pequeño',
+    p2:'$500 – $1,500 USD',p2s:'Proyecto estándar',
+    p3:'$1,500 – $3,000 USD',p3s:'Proyecto completo',
+    p4:'No lo tengo claro',p4s:'Ver opciones primero',
+    u1:'Lo antes posible',u2:'En 1 mes',u3:'Sin prisa / flexible',
+    submitBtn:'Enviar respuestas', submitSending:'Enviando...',
     tyTitle:'¡Listo, gracias!',
     tySub:'Recibí tus respuestas y te contacto pronto con una propuesta.',
     sendTitle:'Compartir con tu cliente',
@@ -682,54 +414,63 @@ const T = {
     waMsg:'Hola 👋 Te comparto este formulario para que me cuentes qué buscas en tu sitio web. Solo toma 3 minutos y me ayuda mucho para prepararte una propuesta personalizada 😊\n\n',
     emailSubj:'Cuéntame sobre tu sitio web',
     emailBody:'Hola,\n\nTe comparto este breve formulario para que me cuentes qué buscas en tu nuevo sitio web. Solo toma unos minutos y me ayudará a prepararte una propuesta personalizada.\n\n',
-    copyBtn:'Copiar mensaje',
-    copied:'Copiado ✓',
-    openWa:'Abrir WhatsApp',
-    openEmail:'Abrir correo',
-    commentsLabel: 'Comentarios adicionales',
-    commentsQuestion: '¿Algo más que quieras contarme?',
-    commentsPlaceholder: 'Detalles adicionales, preguntas, ideas...',
-    labelMap:{rubro:'Rubro',objetivo:'Objetivo',funciones:'Funciones',estilo:'Estilo',material:'Material',urgencia:'Urgencia',presupuesto:'Presupuesto'}
+    copyBtn:'Copiar mensaje', copied:'Copiado ✓',
+    openWa:'Abrir WhatsApp', openEmail:'Abrir correo',
+    alertNombre:'Por favor ingresa tu nombre.',
+    alertNegocio:'Por favor ingresa el nombre de tu negocio.',
+    alertDescripcion:'Por favor cuéntanos qué imaginas para tu sitio.',
+    labelMap:{rubro:'Rubro',objetivo:'Objetivo',estilo:'Estilo',colores:'Colores',material:'Material',funciones:'Funciones',presupuesto:'Presupuesto',urgencia:'Tiempo',descripcion:'Descripción',referencia:'Referencia',negocio:'Negocio',otroRubro:'Rubro (detalle)'}
   },
   en:{
     headerTitle:'Tell me about your website',
-    headerSub:'Takes 3 minutes · No typing · Just clicks',
-    progLabel:(d,t)=>`${d} of ${t} questions answered`,
-    nombreLabel: 'Your name',
-    nombrePlaceholder: 'First and last name',
-    s1:'Your business',s2:'Features',s3:'Visual style',s4:'Timeline & budget',
-    q1:'What industry is your business in?',
-    q2:'What is the main goal of your website?',
-    q3:'What features do you need? (pick several)',
-    q4:'How do you picture your website looking?',
-    q5:'Do you have any materials ready? (pick all that apply)',
-    q6:'How much time do you have to launch the site?',
-    q7:'Do you have a rough budget in mind?',
-    r1:'Beauty & wellness',r1s:'Salon, spa, aesthetics',
-    r2:'Food & beverage',r2s:'Restaurant, catering, bakery',
-    r3:'Fashion & retail',r3s:'Clothing, accessories, shop',
+    headerSub:'Takes 3 minutes · Easy and quick',
+    progLabel:(d,t)=>`${d} of ${t} sections completed`,
+    s1:'Your information', s2:'Your business', s3:'Website goal',
+    s4:'Visual style', s5:'Available materials', s6:'Features',
+    s7:'Budget & timeline', s8:'Almost done',
+    q0:'What is your name?', q0b:'What is the name of your business?',
+    q2:'What does your business do?',
+    q3:'What do you want the site for? (pick several)',
+    q4:'Is there a website you like or find inspiring?',
+    q5:'How do you want your site to look?',
+    q6:'Do you have favorite colors for your site? (pick up to 2)',
+    q7:'What materials do you already have?',
+    q8:'What do you need your site to do?',
+    q9:'How much are you thinking of investing?',
+    q10:'When do you need the site?',
+    q11:'In your own words, what do you imagine for your site?',
+    nombrePlaceholder:'First and last name',
+    negocioPlaceholder:'Business name',
+    referenciasPlaceholder:'https://... (optional)',
+    descripcionPlaceholder:'Tell me anything: ideas, inspiration, how you want visitors to feel...',
+    otroPH:'Briefly describe your business...',
+    r1:'Restaurant / Café',r1s:'Food, drinks, catering',
+    r2:'Health & Beauty',r2s:'Salon, spa, clinic, therapy',
+    r3:'Fashion / Clothing',r3s:'Clothing, accessories, shop',
     r4:'Professional services',r4s:'Consulting, legal, accounting',
-    r5:'Healthcare',r5s:'Clinic, office, therapy',
-    r6:'Other',r6s:'My business is different',
-    o1:'Online presence',o1s:'Get found on Google',
-    o2:'Get new clients',o2s:'Generate leads and sales',
-    o3:'Sell products',o3s:'Online store',
-    o4:'Book appointments',o4s:'Online scheduling',
-    f1:'Contact form',f2:'Appointment booking',f3:'Services catalogue',
-    f4:'Online payments',f5:'Photo gallery',f6:'WhatsApp button',
-    f7:'Social media links',f8:'Map / location',f9:'Blog or news',f10:'Reviews / testimonials',
+    r5:'Education',r5s:'Academy, courses, coaching',
+    r6:'Real estate',r6s:'Rental, sales, properties',
+    r7:'Other',r7s:'My business is different',
+    o1:'Have an online presence',o2:'Sell products',
+    o3:'Get clients to contact me',o4:'Receive appointments / bookings',
+    o5:'Show my work',o6:'Inform about my services',
     e1:'Modern & clean',e1s:'Minimalist, elegant',
-    e2:'Colorful & fun',e2s:'Vibrant, eye-catching',
-    e3:'Classic & formal',e3s:'Professional, serious',
-    e4:'Not sure yet',e4s:'I need guidance',
-    m1:'I have a logo',m2:'I have photos',m3:'I have written text',m4:'I have nothing yet',
-    u1:'As soon as possible',u2:'Within a month',u3:'In 2 to 3 months',u4:'No rush',
-    p1:'Basic',p1s:'Simple and affordable',
-    p2:'Mid-range',p2s:'Willing to invest if worthwhile',
-    p3:'Premium',p3s:'I want something very complete',
+    e2:'Elegant / Luxury',e2s:'Sophisticated, premium',
+    e3:'Colorful & fun',e3s:'Cheerful, vibrant',
+    e4:'Natural / Organic',e4s:'Fresh, natural, eco',
+    e5:'Formal / Professional',e5s:'Serious, corporate',
+    e6:'Vintage / Retro',e6s:'Classic, nostalgic',
+    m1:'Logo',m2:'Professional photos',m3:'Phone photos',
+    m4:'Videos',m5:'Written text / descriptions',m6:'Active social media',m7:'I have nothing yet',
+    f1:'Photo gallery',f2:'Contact form',f3:'WhatsApp button',
+    f4:'Map & location',f5:'Reservations / appointments',f6:'Online store',
+    f7:'Blog / news',f8:'Multiple languages',
+    p1:'Less than $500 USD',p1s:'Small project',
+    p2:'$500 – $1,500 USD',p2s:'Standard project',
+    p3:'$1,500 – $3,000 USD',p3s:'Full project',
     p4:'Not sure yet',p4s:'I\'d prefer to see options first',
-    submitBtn:'Send my answers',
-    submitSending:'Sending...',
+    u1:'As soon as possible',u2:'Within 1 month',u3:'No rush / flexible',
+    submitBtn:'Send my answers', submitSending:'Sending...',
     tyTitle:'Done, thank you!',
     tySub:'I received your answers and will reach out soon with a proposal.',
     sendTitle:'Share with your client',
@@ -737,54 +478,63 @@ const T = {
     waMsg:'Hi 👋 I\'m sharing this quick form so you can tell me what you\'re looking for in your website. It only takes 3 minutes and helps me put together a personalized proposal 😊\n\n',
     emailSubj:'Tell me about your website',
     emailBody:'Hi,\n\nI\'m sharing this short form so you can tell me what you\'re looking for in your new website. It only takes a few minutes and will help me prepare a personalized proposal.\n\n',
-    copyBtn:'Copy message',
-    copied:'Copied ✓',
-    openWa:'Open WhatsApp',
-    openEmail:'Open email',
-    commentsLabel: 'Additional comments',
-    commentsQuestion: 'Anything else you\'d like to share?',
-    commentsPlaceholder: 'Additional details, questions, ideas...',
-    labelMap:{rubro:'Industry',objetivo:'Goal',funciones:'Features',estilo:'Style',material:'Materials',urgencia:'Timeline',presupuesto:'Budget'}
+    copyBtn:'Copy message', copied:'Copied ✓',
+    openWa:'Open WhatsApp', openEmail:'Open email',
+    alertNombre:'Please enter your name.',
+    alertNegocio:'Please enter your business name.',
+    alertDescripcion:'Please tell us what you imagine for your site.',
+    labelMap:{rubro:'Industry',objetivo:'Goal',estilo:'Style',colores:'Colors',material:'Materials',funciones:'Features',presupuesto:'Budget',urgencia:'Timeline',descripcion:'Description',referencia:'Reference',negocio:'Business',otroRubro:'Industry (detail)'}
   },
   pt:{
     headerTitle:'Me conta sobre o seu site',
-    headerSub:'Leva 3 minutos · Sem digitar · Só cliques',
-    progLabel:(d,t)=>`${d} de ${t} perguntas respondidas`,
-    nombreLabel: 'Seu nome',
-    nombrePlaceholder: 'Nome e sobrenome',
-    s1:'Seu negócio',s2:'Funcionalidades',s3:'Estilo visual',s4:'Prazo e orçamento',
-    q1:'Em qual setor é o seu negócio?',
-    q2:'Qual é o objetivo principal do seu site?',
-    q3:'Quais funcionalidades você precisa? (pode escolher várias)',
-    q4:'Como você imagina que seu site vai parecer?',
-    q5:'Você tem algum material pronto? (marque os que se aplicam)',
-    q6:'Quanto tempo você tem para ter o site pronto?',
-    q7:'Você tem um orçamento aproximado em mente?',
-    r1:'Beleza e bem-estar',r1s:'Salão, spa, estética',
-    r2:'Alimentação',r2s:'Restaurante, catering, confeitaria',
-    r3:'Moda e varejo',r3s:'Roupas, acessórios, loja',
+    headerSub:'Leva 3 minutos · Fácil e rápido',
+    progLabel:(d,t)=>`${d} de ${t} seções concluídas`,
+    s1:'Suas informações', s2:'Seu negócio', s3:'Objetivo do site',
+    s4:'Estilo visual', s5:'Materiais disponíveis', s6:'Funcionalidades',
+    s7:'Orçamento e prazo', s8:'Quase lá',
+    q0:'Qual é o seu nome?', q0b:'Qual é o nome do seu negócio?',
+    q2:'O que o seu negócio faz?',
+    q3:'Para que você quer o site? (pode escolher vários)',
+    q4:'Tem algum site que você gosta ou que te inspira?',
+    q5:'Como você quer que seu site pareça?',
+    q6:'Tem cores favoritas para o seu site? (escolha até 2)',
+    q7:'Que materiais você já tem?',
+    q8:'O que você precisa que o site faça?',
+    q9:'Quanto você pensa em investir?',
+    q10:'Quando você precisa do site?',
+    q11:'Com suas próprias palavras, o que você imagina para o seu site?',
+    nombrePlaceholder:'Nome e sobrenome',
+    negocioPlaceholder:'Nome do negócio',
+    referenciasPlaceholder:'https://... (opcional)',
+    descripcionPlaceholder:'Me conta qualquer coisa: ideias, inspirações, como você quer que os visitantes se sintam...',
+    otroPH:'Descreva brevemente o seu negócio...',
+    r1:'Restaurante / Café',r1s:'Comida, bebidas, catering',
+    r2:'Saúde & Beleza',r2s:'Salão, spa, clínica, terapia',
+    r3:'Moda / Roupas',r3s:'Roupas, acessórios, loja',
     r4:'Serviços profissionais',r4s:'Consultoria, jurídico, contabilidade',
-    r5:'Saúde',r5s:'Clínica, consultório, terapia',
-    r6:'Outro',r6s:'Meu negócio é diferente',
-    o1:'Presença online',o1s:'Ser encontrado no Google',
-    o2:'Conseguir clientes',o2s:'Gerar contatos e vendas',
-    o3:'Vender produtos',o3s:'Loja online',
-    o4:'Agendar consultas',o4s:'Agenda online para clientes',
-    f1:'Formulário de contato',f2:'Agendamento',f3:'Catálogo de serviços',
-    f4:'Pagamentos online',f5:'Galeria de fotos',f6:'Botão do WhatsApp',
-    f7:'Redes sociais',f8:'Mapa / localização',f9:'Blog ou notícias',f10:'Avaliações / depoimentos',
+    r5:'Educação',r5s:'Academia, cursos, coaching',
+    r6:'Imobiliária',r6s:'Aluguel, venda, propriedades',
+    r7:'Outro',r7s:'Meu negócio é diferente',
+    o1:'Ter presença na internet',o2:'Vender produtos',
+    o3:'Que os clientes me contactem',o4:'Receber consultas / reservas',
+    o5:'Mostrar meu trabalho',o6:'Informar sobre meus serviços',
     e1:'Moderno e limpo',e1s:'Minimalista, elegante',
-    e2:'Colorido e alegre',e2s:'Vibrante, chamativo',
-    e3:'Clássico e formal',e3s:'Profissional, sério',
-    e4:'Ainda não sei',e4s:'Preciso de orientação',
-    m1:'Tenho logo',m2:'Tenho fotos',m3:'Tenho textos',m4:'Ainda não tenho nada',
-    u1:'O mais rápido possível',u2:'Em um mês',u3:'Em 2 ou 3 meses',u4:'Sem pressa',
-    p1:'Básico',p1s:'Simples e acessível',
-    p2:'Intermediário',p2s:'Invisto se valer a pena',
-    p3:'Premium',p3s:'Quero algo muito completo',
+    e2:'Elegante / Luxuoso',e2s:'Sofisticado, premium',
+    e3:'Colorido e divertido',e3s:'Alegre, vibrante',
+    e4:'Natural / Orgânico',e4s:'Fresco, natural, eco',
+    e5:'Formal / Profissional',e5s:'Sério, corporativo',
+    e6:'Vintage / Retrô',e6s:'Clássico, nostálgico',
+    m1:'Logo',m2:'Fotos profissionais',m3:'Fotos de celular',
+    m4:'Vídeos',m5:'Textos / descrições',m6:'Redes sociais ativas',m7:'Ainda não tenho nada',
+    f1:'Galeria de fotos',f2:'Formulário de contato',f3:'Botão do WhatsApp',
+    f4:'Mapa e localização',f5:'Reservas / consultas',f6:'Loja online',
+    f7:'Blog / notícias',f8:'Mais de um idioma',
+    p1:'Menos de $500 USD',p1s:'Projeto pequeno',
+    p2:'$500 – $1.500 USD',p2s:'Projeto padrão',
+    p3:'$1.500 – $3.000 USD',p3s:'Projeto completo',
     p4:'Ainda não sei',p4s:'Prefiro ver as opções primeiro',
-    submitBtn:'Enviar respostas',
-    submitSending:'Enviando...',
+    u1:'O mais rápido possível',u2:'Em 1 mês',u3:'Sem pressa / flexível',
+    submitBtn:'Enviar respostas', submitSending:'Enviando...',
     tyTitle:'Pronto, obrigado!',
     tySub:'Recebi suas respostas e entrarei em contato em breve com uma proposta.',
     sendTitle:'Compartilhar com seu cliente',
@@ -792,101 +542,101 @@ const T = {
     waMsg:'Oi 👋 Estou te mandando este formulário para você me contar o que está procurando no seu site. Leva só 3 minutos e me ajuda muito a preparar uma proposta pra você 😊\n\n',
     emailSubj:'Me conta sobre o seu site',
     emailBody:'Olá,\n\nEstou compartilhando este formulário rápido para você me contar o que está procurando no seu novo site. Leva apenas alguns minutos e vai me ajudar a preparar uma proposta personalizada.\n\n',
-    copyBtn:'Copiar mensagem',
-    copied:'Copiado ✓',
-    openWa:'Abrir WhatsApp',
-    openEmail:'Abrir e-mail',
-    commentsLabel: 'Comentários adicionais',
-    commentsQuestion: 'Tem mais alguma coisa que queira me contar?',
-    commentsPlaceholder: 'Detalhes adicionais, perguntas, ideias...',
-    labelMap:{rubro:'Setor',objetivo:'Objetivo',funciones:'Funcionalidades',estilo:'Estilo',material:'Materiais',urgencia:'Prazo',presupuesto:'Orçamento'}
+    copyBtn:'Copiar mensagem', copied:'Copiado ✓',
+    openWa:'Abrir WhatsApp', openEmail:'Abrir e-mail',
+    alertNombre:'Por favor insira seu nome.',
+    alertNegocio:'Por favor insira o nome do seu negócio.',
+    alertDescripcion:'Por favor nos conte o que você imagina para o seu site.',
+    labelMap:{rubro:'Setor',objetivo:'Objetivo',estilo:'Estilo',colores:'Cores',material:'Materiais',funciones:'Funcionalidades',presupuesto:'Orçamento',urgencia:'Prazo',descripcion:'Descrição',referencia:'Referência',negocio:'Negócio',otroRubro:'Setor (detalhe)'}
   }
 };
 
-let lang = 'es';
-let sendLang = 'es';
-let channel = null;
-const TOTAL_SINGLES = 5;
-
-const state = {
-  rubro: null, objetivo: null, funciones: [], estilo: null,
-  material: [], urgencia: null, presupuesto: null
-};
-
 const valueLabels = {
-  belleza:{es:'Belleza y bienestar',en:'Beauty & wellness',pt:'Beleza e bem-estar'},
-  alimentos:{es:'Alimentos',en:'Food & beverage',pt:'Alimentação'},
-  moda:{es:'Moda y retail',en:'Fashion & retail',pt:'Moda e varejo'},
+  restaurante:{es:'Restaurante / Café',en:'Restaurant / Café',pt:'Restaurante / Café'},
+  belleza:{es:'Salud & Belleza',en:'Health & Beauty',pt:'Saúde & Beleza'},
+  moda:{es:'Moda / Ropa',en:'Fashion / Clothing',pt:'Moda / Roupas'},
   servicios:{es:'Servicios profesionales',en:'Professional services',pt:'Serviços profissionais'},
-  salud:{es:'Salud',en:'Healthcare',pt:'Saúde'},
+  educacion:{es:'Educación',en:'Education',pt:'Educação'},
+  inmobiliaria:{es:'Inmobiliaria',en:'Real estate',pt:'Imobiliária'},
   otro:{es:'Otro',en:'Other',pt:'Outro'},
-  presencia:{es:'Presencia online',en:'Online presence',pt:'Presença online'},
-  clientes:{es:'Conseguir clientes',en:'Get new clients',pt:'Conseguir clientes'},
+  presencia:{es:'Tener presencia en internet',en:'Have an online presence',pt:'Ter presença na internet'},
   vender:{es:'Vender productos',en:'Sell products',pt:'Vender produtos'},
-  citas:{es:'Reservar citas',en:'Book appointments',pt:'Agendar consultas'},
-  contacto:{es:'Formulario de contacto',en:'Contact form',pt:'Formulário de contato'},
-  catalogo:{es:'Catálogo de servicios',en:'Services catalogue',pt:'Catálogo de serviços'},
-  pagos:{es:'Pagos en línea',en:'Online payments',pt:'Pagamentos online'},
+  contacto:{es:'Que los clientes me contacten',en:'Get clients to contact me',pt:'Que os clientes me contactem'},
+  citas:{es:'Recibir citas / reservaciones',en:'Receive appointments',pt:'Receber consultas / reservas'},
+  portfolio:{es:'Mostrar mi trabajo',en:'Show my work',pt:'Mostrar meu trabalho'},
+  informar:{es:'Informar sobre mis servicios',en:'Inform about my services',pt:'Informar sobre meus serviços'},
+  moderno:{es:'Moderno y limpio',en:'Modern & clean',pt:'Moderno e limpo'},
+  lujoso:{es:'Elegante / Lujoso',en:'Elegant / Luxury',pt:'Elegante / Luxuoso'},
+  colorido:{es:'Colorido y divertido',en:'Colorful & fun',pt:'Colorido e divertido'},
+  natural:{es:'Natural / Orgánico',en:'Natural / Organic',pt:'Natural / Orgânico'},
+  formal:{es:'Formal / Profesional',en:'Formal / Professional',pt:'Formal / Profissional'},
+  vintage:{es:'Vintage / Retro',en:'Vintage / Retro',pt:'Vintage / Retrô'},
+  negro:{es:'Negro',en:'Black',pt:'Preto'},
+  blanco:{es:'Blanco / Beige',en:'White / Beige',pt:'Branco / Bege'},
+  azul:{es:'Azul',en:'Blue',pt:'Azul'},
+  verde:{es:'Verde',en:'Green',pt:'Verde'},
+  naranja:{es:'Rojo / Naranja',en:'Red / Orange',pt:'Vermelho / Laranja'},
+  rosa:{es:'Rosa',en:'Pink',pt:'Rosa'},
+  morado:{es:'Morado',en:'Purple',pt:'Roxo'},
+  dorado:{es:'Dorado',en:'Gold',pt:'Dourado'},
+  logo:{es:'Logo',en:'Logo',pt:'Logo'},
+  fotos_pro:{es:'Fotos profesionales',en:'Professional photos',pt:'Fotos profissionais'},
+  fotos_cel:{es:'Fotos de celular',en:'Phone photos',pt:'Fotos de celular'},
+  videos:{es:'Videos',en:'Videos',pt:'Vídeos'},
+  textos:{es:'Textos / descripciones',en:'Written text',pt:'Textos / descrições'},
+  redes:{es:'Redes sociales activas',en:'Active social media',pt:'Redes sociais ativas'},
+  nada:{es:'No tengo nada aún',en:'Nothing yet',pt:'Ainda não tenho nada'},
   galeria:{es:'Galería de fotos',en:'Photo gallery',pt:'Galeria de fotos'},
   whatsapp:{es:'Botón de WhatsApp',en:'WhatsApp button',pt:'Botão do WhatsApp'},
-  redes:{es:'Redes sociales',en:'Social media links',pt:'Redes sociais'},
-  mapa:{es:'Mapa / ubicación',en:'Map / location',pt:'Mapa / localização'},
-  blog:{es:'Blog o noticias',en:'Blog or news',pt:'Blog ou notícias'},
-  testimonios:{es:'Reseñas / testimonios',en:'Reviews / testimonials',pt:'Avaliações / depoimentos'},
-  moderno:{es:'Moderno y limpio',en:'Modern & clean',pt:'Moderno e limpo'},
-  colorido:{es:'Colorido y alegre',en:'Colorful & fun',pt:'Colorido e alegre'},
-  clasico:{es:'Clásico y formal',en:'Classic & formal',pt:'Clássico e formal'},
-  no_se:{es:'No lo sé aún',en:'Not sure yet',pt:'Ainda não sei'},
-  logo:{es:'Tengo logo',en:'Have a logo',pt:'Tenho logo'},
-  fotos:{es:'Tengo fotos',en:'Have photos',pt:'Tenho fotos'},
-  textos:{es:'Tengo textos',en:'Have text content',pt:'Tenho textos'},
-  nada:{es:'No tengo nada',en:'Nothing yet',pt:'Ainda não tenho nada'},
+  mapa:{es:'Mapa y ubicación',en:'Map & location',pt:'Mapa e localização'},
+  tienda:{es:'Tienda en línea',en:'Online store',pt:'Loja online'},
+  blog:{es:'Blog / noticias',en:'Blog / news',pt:'Blog / notícias'},
+  idiomas:{es:'Más de un idioma',en:'Multiple languages',pt:'Mais de um idioma'},
+  menos500:{es:'Menos de $500 USD',en:'Less than $500 USD',pt:'Menos de $500 USD'},
+  '500_1500':{es:'$500 – $1,500 USD',en:'$500 – $1,500 USD',pt:'$500 – $1.500 USD'},
+  '1500_3000':{es:'$1,500 – $3,000 USD',en:'$1,500 – $3,000 USD',pt:'$1.500 – $3.000 USD'},
+  no_se:{es:'No lo tengo claro',en:'Not sure yet',pt:'Ainda não sei'},
   urgente:{es:'Lo antes posible',en:'ASAP',pt:'O mais rápido possível'},
-  '1mes':{es:'En un mes',en:'Within a month',pt:'Em um mês'},
-  '2meses':{es:'En 2-3 meses',en:'In 2-3 months',pt:'Em 2-3 meses'},
-  sinprisa:{es:'Sin prisa',en:'No rush',pt:'Sem pressa'},
-  basico:{es:'Básico',en:'Basic',pt:'Básico'},
-  medio:{es:'Intermedio',en:'Mid-range',pt:'Intermediário'},
-  premium:{es:'Premium',en:'Premium',pt:'Premium'}
+  '1mes':{es:'En 1 mes',en:'Within 1 month',pt:'Em 1 mês'},
+  sinprisa:{es:'Sin prisa / flexible',en:'No rush / flexible',pt:'Sem pressa / flexível'}
 };
 
-function getLabel(v, l) {
-  return valueLabels[v] ? (valueLabels[v][l] || v) : v;
-}
+function getLabel(v, l) { return valueLabels[v] ? (valueLabels[v][l] || v) : v; }
+
+let lang = 'es', sendLang = 'es', channel = null;
+const TOTAL_SECTIONS = 6;
+const state = { rubro:null, objetivo:[], estilo:null, colores:[], material:[], funciones:[], presupuesto:null, urgencia:null };
 
 function setLang(l) {
   lang = l;
-  document.querySelectorAll('.lang-btn').forEach((b, i) => {
-    b.classList.toggle('active', ['es','en','pt'][i] === l);
-  });
+  document.querySelectorAll('.lang-btn').forEach((b,i) => b.classList.toggle('active', ['es','en','pt'][i]===l));
   const t = T[l];
   document.getElementById('header-title').textContent = t.headerTitle;
-  document.getElementById('lbl-nombre').textContent = t.nombreLabel;
-  document.getElementById('input-nombre').placeholder = t.nombrePlaceholder;
-  document.getElementById('lbl-comments').textContent = t.commentsLabel;
-  document.getElementById('q-comments').textContent = t.commentsQuestion;
-  document.getElementById('input-comments').placeholder = t.commentsPlaceholder;
   document.getElementById('header-sub').textContent = t.headerSub;
   document.getElementById('submit-label').textContent = t.submitBtn;
   document.getElementById('ty-title').textContent = t.tyTitle;
   document.getElementById('ty-sub').textContent = t.tySub;
-  const ids = ['lbl-nombre','lbl-s1','lbl-s2','lbl-s3','lbl-s4','q1','q2','q3','q4','q5','q6','q7',
-    'r1','r1s','r2','r2s','r3','r3s','r4','r4s','r5','r5s','r6','r6s',
-    'o1','o1s','o2','o2s','o3','o3s','o4','o4s',
-    'f1','f2','f3','f4','f5','f6','f7','f8','f9','f10',
-    'e1','e1s','e2','e2s','e3','e3s','e4','e4s',
-    'm1','m2','m3','m4','u1','u2','u3','u4',
-    'p1','p1s','p2','p2s','p3','p3s','p4','p4s'];
-  const keys = ['s1','s2','s3','s4','q1','q2','q3','q4','q5','q6','q7',
-    'r1','r1s','r2','r2s','r3','r3s','r4','r4s','r5','r5s','r6','r6s',
-    'o1','o1s','o2','o2s','o3','o3s','o4','o4s',
-    'f1','f2','f3','f4','f5','f6','f7','f8','f9','f10',
-    'e1','e1s','e2','e2s','e3','e3s','e4','e4s',
-    'm1','m2','m3','m4','u1','u2','u3','u4',
-    'p1','p1s','p2','p2s','p3','p3s','p4','p4s'];
-  ids.forEach((id, i) => {
+  document.getElementById('send-title').textContent = t.sendTitle;
+  document.getElementById('send-sub').textContent = t.sendSub;
+  document.getElementById('input-nombre').placeholder = t.nombrePlaceholder;
+  document.getElementById('input-negocio').placeholder = t.negocioPlaceholder;
+  document.getElementById('input-referencia').placeholder = t.referenciasPlaceholder;
+  document.getElementById('input-descripcion').placeholder = t.descripcionPlaceholder;
+  document.getElementById('input-otro').placeholder = t.otroPH;
+  const domMap = {
+    'lbl-s1':'s1','lbl-s2':'s2','lbl-s3':'s3','lbl-s4':'s4','lbl-s5':'s5','lbl-s6':'s6','lbl-s7':'s7','lbl-s8':'s8',
+    'q0':'q0','q0b':'q0b','q2':'q2','q3':'q3','q4':'q4','q5':'q5','q6':'q6','q7':'q7','q8':'q8','q9':'q9','q10':'q10','q11':'q11',
+    'r1':'r1','r1s':'r1s','r2':'r2','r2s':'r2s','r3':'r3','r3s':'r3s','r4':'r4','r4s':'r4s','r5':'r5','r5s':'r5s','r6':'r6','r6s':'r6s','r7':'r7','r7s':'r7s',
+    'o1':'o1','o2':'o2','o3':'o3','o4':'o4','o5':'o5','o6':'o6',
+    'e1':'e1','e1s':'e1s','e2':'e2','e2s':'e2s','e3':'e3','e3s':'e3s','e4':'e4','e4s':'e4s','e5':'e5','e5s':'e5s','e6':'e6','e6s':'e6s',
+    'm1':'m1','m2':'m2','m3':'m3','m4':'m4','m5':'m5','m6':'m6','m7':'m7',
+    'f1':'f1','f2':'f2','f3':'f3','f4':'f4','f5':'f5','f6':'f6','f7':'f7','f8':'f8',
+    'p1':'p1','p1s':'p1s','p2':'p2','p2s':'p2s','p3':'p3','p3s':'p3s','p4':'p4','p4s':'p4s',
+    'u1':'u1','u2':'u2','u3':'u3'
+  };
+  Object.entries(domMap).forEach(([id,key]) => {
     const el = document.getElementById(id);
-    if (el && t[keys[i]] !== undefined) el.textContent = t[keys[i]];
+    if (el && t[key] !== undefined) el.textContent = t[key];
   });
   updateProgress();
   if (channel) renderShareBox();
@@ -896,36 +646,58 @@ function pick(btn, group) {
   document.querySelectorAll('[data-g="'+group+'"]').forEach(b => b.classList.remove('selected'));
   btn.classList.add('selected');
   state[group] = btn.dataset.v;
-  if (group === 'rubro') {
-    document.getElementById('otro-box').style.display = btn.dataset.v === 'otro' ? 'block' : 'none';
-  }
+  if (group === 'rubro') document.getElementById('otro-box').style.display = btn.dataset.v === 'otro' ? 'block' : 'none';
   updateProgress();
 }
 
 function pickMulti(btn, group) {
   btn.classList.toggle('selected');
   const v = btn.dataset.v;
-  if (btn.classList.contains('selected')) {
-    if (!state[group].includes(v)) state[group].push(v);
-  } else {
-    state[group] = state[group].filter(x => x !== v);
-  }
+  if (btn.classList.contains('selected')) { if (!state[group].includes(v)) state[group].push(v); }
+  else state[group] = state[group].filter(x => x !== v);
   updateProgress();
 }
 
+function pickColor(el) {
+  const v = el.dataset.v;
+  if (el.classList.contains('selected')) { el.classList.remove('selected'); state.colores = state.colores.filter(x => x !== v); return; }
+  if (state.colores.length >= 2) return;
+  el.classList.add('selected');
+  state.colores.push(v);
+}
+
 function updateProgress() {
-  const singles = ['rubro','objetivo','estilo','urgencia','presupuesto'];
-  const done = singles.filter(k => state[k]).length;
-  const pct = Math.round((done / TOTAL_SINGLES) * 100);
-  document.getElementById('progress').style.width = pct + '%';
-  const t = T[lang];
-  document.getElementById('prog-label').textContent = t.progLabel(done, TOTAL_SINGLES);
+  const checks = [
+    document.getElementById('input-nombre').value.trim() !== '' && document.getElementById('input-negocio').value.trim() !== '',
+    state.rubro !== null,
+    state.objetivo.length > 0,
+    state.estilo !== null,
+    state.material.length > 0,
+    state.funciones.length > 0
+  ];
+  const done = checks.filter(Boolean).length;
+  document.getElementById('progress').style.width = Math.round((done/TOTAL_SECTIONS)*100) + '%';
+  document.getElementById('prog-label').textContent = T[lang].progLabel(done, TOTAL_SECTIONS);
+}
+
+function updateCharCount(el, countId, max) {
+  document.getElementById(countId).textContent = el.value.length;
+  updateProgress();
 }
 
 async function submitForm() {
   const btn = document.getElementById('submit-btn');
   const lbl = document.getElementById('submit-label');
   const t = T[lang];
+  const nombre = document.getElementById('input-nombre').value.trim();
+  const negocio = document.getElementById('input-negocio').value.trim();
+  const descripcion = document.getElementById('input-descripcion').value.trim();
+  const otroRubro = document.getElementById('input-otro').value.trim();
+  const referencia = document.getElementById('input-referencia').value.trim();
+
+  if (!nombre) { alert(t.alertNombre); return; }
+  if (!negocio) { alert(t.alertNegocio); return; }
+  if (!descripcion) { alert(t.alertDescripcion); return; }
 
   lbl.textContent = t.submitSending;
   btn.style.opacity = '0.6';
@@ -933,60 +705,42 @@ async function submitForm() {
 
   const lm = t.labelMap;
   const formData = new FormData();
-  formData.append('_subject', 'Nuevo brief de sitio web');
-  const nombre = document.getElementById('input-nombre').value.trim();
-  const otroRubro = document.getElementById('input-otro').value.trim();
-  const comments = document.getElementById('input-comments').value.trim();
-  
-  if (!nombre) { 
-    alert(lang === 'es' ? 'Por favor ingresa tu nombre.' : lang === 'en' ? 'Please enter your name.' : 'Por favor insira seu nome.');
-    btn.style.opacity = '1'; btn.disabled = false; lbl.textContent = t.submitBtn;
-    return;
-  }
+  formData.append('_subject', 'Nuevo brief de sitio web — ' + nombre);
   formData.append('Nombre', nombre);
-  if (otroRubro) formData.append('Rubro (detalle)', otroRubro);
-  if (comments) formData.append('Comentarios', comments);
-  formData.append('_language', lang);
+  formData.append(lm.negocio, negocio);
   if (state.rubro) formData.append(lm.rubro, getLabel(state.rubro, lang));
-  if (state.objetivo) formData.append(lm.objetivo, getLabel(state.objetivo, lang));
-  if (state.funciones.length) formData.append(lm.funciones, state.funciones.map(v => getLabel(v, lang)).join(', '));
+  if (otroRubro) formData.append(lm.otroRubro, otroRubro);
+  if (state.objetivo.length) formData.append(lm.objetivo, state.objetivo.map(v=>getLabel(v,lang)).join(', '));
+  if (referencia) formData.append(lm.referencia, referencia);
   if (state.estilo) formData.append(lm.estilo, getLabel(state.estilo, lang));
-  if (state.material.length) formData.append(lm.material, state.material.map(v => getLabel(v, lang)).join(', '));
-  if (state.urgencia) formData.append(lm.urgencia, getLabel(state.urgencia, lang));
+  if (state.colores.length) formData.append(lm.colores, state.colores.map(v=>getLabel(v,lang)).join(', '));
+  if (state.material.length) formData.append(lm.material, state.material.map(v=>getLabel(v,lang)).join(', '));
+  if (state.funciones.length) formData.append(lm.funciones, state.funciones.map(v=>getLabel(v,lang)).join(', '));
   if (state.presupuesto) formData.append(lm.presupuesto, getLabel(state.presupuesto, lang));
+  if (state.urgencia) formData.append(lm.urgencia, getLabel(state.urgencia, lang));
+  formData.append(lm.descripcion, descripcion);
+  formData.append('_language', lang);
 
   try {
-    const res = await fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-      method: 'POST',
-      body: formData,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      document.getElementById('main-form').style.display = 'none';
-      document.getElementById('thankyou').classList.add('show');
-    } else {
-      throw new Error('error');
-    }
+    const res = await fetch('https://formspree.io/f/mzdqzlyl', { method:'POST', body:formData, headers:{'Accept':'application/json'} });
+    if (res.ok) { document.getElementById('main-form').style.display='none'; document.getElementById('thankyou').classList.add('show'); }
+    else throw new Error();
   } catch(e) {
-    lbl.textContent = t.submitBtn;
-    btn.style.opacity = '1';
-    btn.disabled = false;
+    lbl.textContent = t.submitBtn; btn.style.opacity='1'; btn.disabled=false;
     alert('Hubo un error al enviar. Por favor intenta de nuevo.');
   }
 }
 
 function setSendLang(l) {
   sendLang = l;
-  ['es','en','pt'].forEach(x => {
-    document.getElementById('sl-'+x).classList.toggle('selected', x === l);
-  });
+  ['es','en','pt'].forEach(x => document.getElementById('sl-'+x).classList.toggle('selected', x===l));
   if (channel) renderShareBox();
 }
 
 function setChannel(ch) {
   channel = ch;
-  document.getElementById('ch-wa').classList.toggle('selected', ch === 'whatsapp');
-  document.getElementById('ch-em').classList.toggle('selected', ch === 'email');
+  document.getElementById('ch-wa').classList.toggle('selected', ch==='whatsapp');
+  document.getElementById('ch-em').classList.toggle('selected', ch==='email');
   renderShareBox();
 }
 
@@ -997,54 +751,27 @@ function buildLink() {
 }
 
 function renderShareBox() {
-  const t = T[sendLang];
-  const link = buildLink();
-  const box = document.getElementById('share-box');
+  const t = T[sendLang], link = buildLink(), box = document.getElementById('share-box');
   box.classList.add('show');
-
   if (channel === 'whatsapp') {
-    const fullMsg = t.waMsg + link;
-    const encoded = encodeURIComponent(fullMsg);
-    box.innerHTML = `
-      <strong>${t.waMsg.split('\n')[0]}</strong>
-      ${t.waMsg.replace(/\n/g,'<br>')}
-      <span class="link-text">${link}</span>
-      <div class="action-row">
-        <button class="action-btn" id="copy-wa-btn" onclick="copyText('${encoded}','copy-wa-btn','${t.copied}','${t.copyBtn}')">${t.copyBtn}</button>
-        <a href="https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encoded}" target="_blank" style="flex:1;text-decoration:none">
-          <button class="action-btn wa" style="width:100%">${t.openWa}</button>
-        </a>
-      </div>`;
+    const fullMsg = t.waMsg + link, encoded = encodeURIComponent(fullMsg);
+    box.innerHTML = `<strong>${t.waMsg.split('\n')[0]}</strong>${t.waMsg.replace(/\n/g,'<br>')}<span class="link-text">${link}</span><div class="action-row"><button class="action-btn" id="copy-wa-btn" onclick="copyText('${encoded}','copy-wa-btn','${t.copied}','${t.copyBtn}')">${t.copyBtn}</button><a href="https://api.whatsapp.com/send?phone=${WA_NUMBER}&text=${encoded}" target="_blank" style="flex:1;text-decoration:none"><button class="action-btn wa" style="width:100%">${t.openWa}</button></a></div>`;
   } else {
-    const fullBody = t.emailBody + link;
-    const mailto = `mailto:?subject=${encodeURIComponent(t.emailSubj)}&body=${encodeURIComponent(fullBody)}`;
-    const encoded = encodeURIComponent(fullBody);
-    box.innerHTML = `
-      <strong>${t.emailSubj}</strong>
-      ${t.emailBody.replace(/\n/g,'<br>')}
-      <span class="link-text">${link}</span>
-      <div class="action-row">
-        <button class="action-btn" id="copy-em-btn" onclick="copyText('${encoded}','copy-em-btn','${t.copied}','${t.copyBtn}')">${t.copyBtn}</button>
-        <a href="${mailto}" style="flex:1;text-decoration:none">
-          <button class="action-btn primary" style="width:100%">${t.openEmail}</button>
-        </a>
-      </div>`;
+    const fullBody = t.emailBody + link, mailto = `mailto:?subject=${encodeURIComponent(t.emailSubj)}&body=${encodeURIComponent(fullBody)}`, encoded = encodeURIComponent(fullBody);
+    box.innerHTML = `<strong>${t.emailSubj}</strong>${t.emailBody.replace(/\n/g,'<br>')}<span class="link-text">${link}</span><div class="action-row"><button class="action-btn" id="copy-em-btn" onclick="copyText('${encoded}','copy-em-btn','${t.copied}','${t.copyBtn}')">${t.copyBtn}</button><a href="${mailto}" style="flex:1;text-decoration:none"><button class="action-btn primary" style="width:100%">${t.openEmail}</button></a></div>`;
   }
 }
 
 function copyText(encoded, btnId, doneLabel, origLabel) {
-  const text = decodeURIComponent(encoded);
-  navigator.clipboard.writeText(text).then(() => {
+  navigator.clipboard.writeText(decodeURIComponent(encoded)).then(() => {
     const btn = document.getElementById(btnId);
-    if (btn) {
-      btn.textContent = doneLabel;
-      btn.classList.add('done');
-      setTimeout(() => { btn.textContent = origLabel; btn.classList.remove('done'); }, 2000);
-    }
+    if (btn) { btn.textContent = doneLabel; btn.classList.add('done'); setTimeout(()=>{ btn.textContent=origLabel; btn.classList.remove('done'); }, 2000); }
   });
 }
 
-// Read ?lang= param on load
+document.getElementById('input-nombre').addEventListener('input', updateProgress);
+document.getElementById('input-negocio').addEventListener('input', updateProgress);
+
 const urlLang = new URLSearchParams(window.location.search).get('lang');
 if (urlLang && ['es','en','pt'].includes(urlLang)) {
   setLang(urlLang);
