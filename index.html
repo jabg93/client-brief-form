@@ -640,6 +640,8 @@ const T = {
     headerTitle:'Cuéntame sobre tu sitio web',
     headerSub:'Toma 3 minutos · Sin texto libre · Solo clics',
     progLabel:(d,t)=>`${d} de ${t} preguntas respondidas`,
+    nombreLabel: 'Tu nombre',
+    nombrePlaceholder: 'Nombre y apellido',
     s1:'Tu negocio',s2:'Funciones',s3:'Estilo visual',s4:'Tiempo y presupuesto',
     q1:'¿Cuál es el rubro de tu negocio?',
     q2:'¿Para qué quieres el sitio principalmente?',
@@ -690,6 +692,8 @@ const T = {
     headerTitle:'Tell me about your website',
     headerSub:'Takes 3 minutes · No typing · Just clicks',
     progLabel:(d,t)=>`${d} of ${t} questions answered`,
+    nombreLabel: 'Your name',
+    nombrePlaceholder: 'First and last name',
     s1:'Your business',s2:'Features',s3:'Visual style',s4:'Timeline & budget',
     q1:'What industry is your business in?',
     q2:'What is the main goal of your website?',
@@ -740,6 +744,8 @@ const T = {
     headerTitle:'Me conta sobre o seu site',
     headerSub:'Leva 3 minutos · Sem digitar · Só cliques',
     progLabel:(d,t)=>`${d} de ${t} perguntas respondidas`,
+    nombreLabel: 'Seu nome',
+    nombrePlaceholder: 'Nome e sobrenome',
     s1:'Seu negócio',s2:'Funcionalidades',s3:'Estilo visual',s4:'Prazo e orçamento',
     q1:'Em qual setor é o seu negócio?',
     q2:'Qual é o objetivo principal do seu site?',
@@ -846,11 +852,13 @@ function setLang(l) {
   });
   const t = T[l];
   document.getElementById('header-title').textContent = t.headerTitle;
+  document.getElementById('lbl-nombre').textContent = t.nombreLabel;
+  document.getElementById('input-nombre').placeholder = t.nombrePlaceholder;
   document.getElementById('header-sub').textContent = t.headerSub;
   document.getElementById('submit-label').textContent = t.submitBtn;
   document.getElementById('ty-title').textContent = t.tyTitle;
   document.getElementById('ty-sub').textContent = t.tySub;
-  const ids = ['lbl-s1','lbl-s2','lbl-s3','lbl-s4','q1','q2','q3','q4','q5','q6','q7',
+  const ids = ['lbl-nombre','lbl-s1','lbl-s2','lbl-s3','lbl-s4','q1','q2','q3','q4','q5','q6','q7',
     'r1','r1s','r2','r2s','r3','r3s','r4','r4s','r5','r5s','r6','r6s',
     'o1','o1s','o2','o2s','o3','o3s','o4','o4s',
     'f1','f2','f3','f4','f5','f6','f7','f8','f9','f10',
